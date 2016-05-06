@@ -148,4 +148,6 @@ Similar to make files, you can also add post and pre hooks. In the file below, i
 }
 ```
 
-Here is some more info on [npm scripts](https://docs.npmjs.com/misc/scripts) and running [custom scripts](https://docs.npmjs.com/cli/run-script).
+## Further reading
+
+There are bunch of other neat tricks. Here is some more info on [npm scripts](https://docs.npmjs.com/misc/scripts) and running [custom scripts](https://docs.npmjs.com/cli/run-script).
