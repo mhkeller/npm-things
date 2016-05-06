@@ -22,7 +22,7 @@ npm init
 
 This will give you an interactive prompt to help you fill out your project information.
 
-![npm init process](assets/init.gif)
+![npm init process](../assets/init.gif)
 
 As it prompts you for information, the value in parenthese is the default. If you hit <kbd>return</kbd>, this value will auto-fill.
 
@@ -38,7 +38,7 @@ Let's try that with Underscore:
 npm install underscore
 ```
 
-![npm init process](assets/install.gif)
+![npm init process](../assets/install.gif)
 
 The install process addded a `node_modules` folder and inside of that, it installed our undscore library.
 
@@ -58,7 +58,7 @@ To install a dependency **and** have that saved to your `package.json` use the `
 npm install --save underscore
 ```
 
-![npm init process](assets/install.gif)
+![npm init process](../assets/install.gif)
 
 Very handily, the version number is automatically saved in our `package.json`.
 
