@@ -160,6 +160,17 @@ The stack trace is a record of what functions were called, listed in verse chron
 
 We already looked at line 20 so we can skip that. Next is our `stacktrace-lib` file and line 19, let's take a look at that. If you read this function, what do you see? 
 
+```js
+function addNumbers (x, y, cb) {
+  var err = null
+  var sum = x + y
+  if (sum < 10) {
+    err = 'oh no!'
+  }
+  cb(err, sum)
+}
+```
+
 This function is designed to throw an error if the sum of the two numbers is less than 10. You might have noticed that we passed it `1` and `2` so that would trigger the error conditions. If you didn't notice that, or more realistically, it's not immediately obvious who passed this function bad arguments, go to the next line of the stack trace.
 
 The next line tells us to look at line 18 of index.js. This is where we're calling `sumNumbers` and giving it bad info. This line is really useful since we're calling `sumNumbers` twice and we want to know which one is causing us so much difficulty in our lives.
