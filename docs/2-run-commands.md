@@ -3,7 +3,7 @@ Run commands
 
 One of the great things about npm is its ability to run tasks for you similar to a make file. For example, if your project is to scrape a website, you could say `npm start` and it will execute a list of commands in the proper order.
 
-This workflow is nice because it means all of your projects can be started with the same command so you don't have to remember things like "Do I run the download.js script and then the fetch.js or vice versa?" When you come to an old project, it can follow consistent conventions.
+This workflow is nice because it means all of your projects can be started with the same command so you don't have to remember things like "Do I run the download.js script and then the fetch.js or vice versa?" When you come to an old project, it can follow consistent conventions like `npm start` or `npm run dev`.
 
 ## Specifying run commands
 
