@@ -15,8 +15,3 @@ For reference, here are the official [npm docs](https://docs.npmjs.com/).
 ## Thoughts?
 
 Feedback / additions /corrections are welcome. Check out the [issues](https://github.com/mhkeller/npm-things/issues) for ideas of other topics.
-
-## License
-
-MIT
-
