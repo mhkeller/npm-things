@@ -40,7 +40,7 @@ npm install underscore
 
 ![npm init process](../assets/install.gif)
 
-The install process addded a `node_modules` folder and inside of that, it installed our undscore library.
+The install process added a `node_modules` folder and inside of that, it installed our undscore library.
 
 **Note:** After installing, any time you see a tree structure displaying module names with their version number, you can breath easy knowing that the installation went smoothly.
 
