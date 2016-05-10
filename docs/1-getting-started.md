@@ -1,7 +1,11 @@
 Getting started
 ===============
 
-npm is the package manager and command line utility for JavaScript and NodeJS. If you've installed node through homebrew or through the package installers at [nodejs.org](https://nodejs.org), you will also have npm. Let's start a project!
+npm is the package manager and command line utility for JavaScript and NodeJS. If you've installed node through homebrew or through the package installers at [nodejs.org](https://nodejs.org), you will also have npm. 
+
+These commands will all be run in the Terminal but they're pretty straightforward so you don't need to be a command-line expert to follow along. If you've dabbled in NodeJS or have heard about how you can use npm as a part of a build system or as a task runner, then these tutorials might have some useful best practices for you.
+
+Let's start a project!
 
 ## Init'ing a project
 

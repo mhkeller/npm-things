@@ -3,6 +3,8 @@ Error messages
 
 Reading error messages can be tricky. Npm doesn't fully help since it prints out a lot of boilerplate info, but we can find some common patterns.
 
+As a general note, every time npm throws an error, it will write out the error to a file called `npm-debug.log` in your current working directory. The next time you successfully run an npm command, the file will be deleted. This file often crops up during merge conflicts. If you've either fixed the issue or documented its contents elsewhere, you can safely delete this file.
+
 ## Table of contents
 
 * [npm command errors](#npm-command-errors)
