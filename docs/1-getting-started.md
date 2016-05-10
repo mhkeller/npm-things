@@ -1,7 +1,7 @@
 Getting started
 ===============
 
-npm is the package manager and command line utility for JavaScript and NodeJS. If you've installed node, you will also have npm. Let's start a project!
+npm is the package manager and command line utility for JavaScript and NodeJS. If you've installed node through homebrew or through the package installers at [nodejs.org](https://nodejs.org), you will also have npm. Let's start a project!
 
 ## Init'ing a project
 
@@ -40,7 +40,7 @@ npm install underscore
 
 ![npm init process](../assets/install.gif)
 
-The install process added a `node_modules` folder and inside of that, it installed our undscore library.
+The install process added a `node_modules` folder and inside of that, it installed our underscore library.
 
 **Note:** After installing, any time you see a tree structure displaying module names with their version number, you can breath easy knowing that the installation went smoothly.
 
