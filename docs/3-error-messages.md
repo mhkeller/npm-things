@@ -8,8 +8,8 @@ As a general note, every time npm throws an error, it will write out the error t
 ## Table of contents
 
 * [npm command errors](#npm-command-errors)
-* [No module found errors](#no-module-found-errors)
 * [Script errors](#script)
+* [No module found errors](#no-module-found-errors)
 * [Reading stack traces](#reading-stack-traces)
 
 ## npm command errors
@@ -43,11 +43,35 @@ The rest of the text is boilerplate information on how to report an error.
 
 **Main takeaway:** Look at the middle section to see if npm has given you a meaningful error message.
 
+## No module found errors
+
+A very common error is that a script you've written is calling a dependency that you have not installed. Replace the contents of your `index.js` file in your `my-project` folder with [`problem-files/no-module.js`](../problem-files/no-module.js) and run `npm start`. You should get the following error:
+
+```
+module.js:327
+    throw err;
+    ^
+
+Error: Cannot find module 'underscore'
+    at Function.Module._resolveFilename (module.js:325:15)
+    at Function.Module._load (module.js:276:25)
+    at Module.require (module.js:353:17)
+    at require (internal/module.js:12:17)
+    at Object.<anonymous> (/Users/mkeller52/wrk/code/npm-things/problem-files/no-module.js:2:18)
+    at Module._compile (module.js:409:26)
+    at Object.Module._extensions..js (module.js:416:10)
+    at Module.load (module.js:343:32)
+    at Function.Module._load (module.js:300:12)
+    at Function.Module.runMain (module.js:441:10)
+```
+
+Fortunatley this is fairly straightforward. If the project author installed the dependencies using `npm install --save <pkg name>` as discussed in [1-getting-started.md](1-getting-started.md), then the fix is easy: run `npm install`. This will install all the dependencies listed in `package.json`. If our underscore dependency is not listed in that file, then consult with the project author as to what version is required and then install that dependency with the `npm install --save` syntax.
+
 ## Script errors
 
 These are generic JavaScript errors such as `ReferenceErrors` or `TypeErrors`. They are essentially simple errors that should look familiar to you if you're used to coding JavaScript in the browser. npm adds some extra junk, though, so let's see what we can safely ignore and which parts are relevant.
 
-Replace the contents of your `index.js` file with [`problem-files/reference-error.js`](../problem-files/reference-error.js) and run `npm start`. You should get the following error:
+Replace the contents of your `index.js` file in your `my-project` folder with [`problem-files/reference-error.js`](../problem-files/reference-error.js) and run `npm start`. You should get the following error:
 
 ```
 > my-project@1.0.0 start /Users/username/my-project
