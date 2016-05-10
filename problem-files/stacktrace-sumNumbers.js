@@ -10,7 +10,7 @@ function blahblah2 () {
 
 }
 
-function addNumbers (x, y, cb) {
+function sumNumbers (x, y, cb) {
   var err = null
   var sum = x + y
   if (sum < 10) {
@@ -19,4 +19,4 @@ function addNumbers (x, y, cb) {
   cb(err, sum)
 }
 
-module.exports = addNumbers
+module.exports = sumNumbers

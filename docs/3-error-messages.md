@@ -104,7 +104,7 @@ Like normal JavaScript errors, it tells you that we're trying to call `toUpperCa
 
 The previous error was fairly straightforward since it involved a single file. When your code involves callbacks, things can get tricky...
 
-Replace the contents of your `index.js` with [`problem-files/stacktrace-index.js`](../problem-files/stacktrace-index.js). Copy the file [`problem-files/stacktrace-lib.js`](../problem-files/stacktrace-lib.js) into your projects root folder so it's a sibling of `index.js`.
+Replace the contents of your `index.js` with [`problem-files/stacktrace-index.js`](../problem-files/stacktrace-index.js). Copy the file [`problem-files/stacktrace-sumNumbers.js`](../problem-files/stacktrace-sumNumbers.js) into your projects root folder so it's a sibling of `index.js`.
 
 Now run `npm start`. You should see this error 
 
@@ -112,14 +112,14 @@ Now run `npm start`. You should see this error
 > my-project@1.0.0 start /Users/mkeller52/wrk/test/my-project
 > node index.js
 
-/Users/username/my-project/index.js:20
+/Users/username/my-project/index.js:17
     throw new Error(err)
     ^
 
 Error: oh no!
-    at /Users/username/my-project/index.js:20:11
-    at module.exports (/Users/username/my-project/stacktrace-lib.js:19:3)
-    at Object.<anonymous> (/Users/username/my-project/index.js:18:1)
+    at handleResponse (/Users/username/my-project/problem-files/stacktrace-index.js:17:11)
+    at sumNumbers (/Users/username/my-project/problem-files/stacktrace-sumNumbers.js:19:3)
+    at Object.<anonymous> (/Users/username/my-project/problem-files/stacktrace-index.js:13:1)
     at Module._compile (module.js:409:26)
     at Object.Module._extensions..js (module.js:416:10)
     at Module.load (module.js:343:32)
@@ -154,11 +154,13 @@ npm ERR!     /Users/username/my-project/npm-debug.log
 
 Again, we scroll up to read the error that JavaScript sent us and we ignore the npm cruft. Unfortunately, this error isn't very helpful since it just says `oh no!`.
 
-The first place to look is line 20 of our index.js file, as the message tells us up top. That isn't super helpful because that's merely the line that is telling us that it found an error, not the root cause. To go deeper we start reading the stack trace, which is the list of files below the line `Error: oh no!`.
+The first place to look is line 17 of our index.js file, as the message tells us up top. That isn't super helpful because that's merely the line that is telling us that it found an error, not the root cause. If your error is a jewelry thief fleeing from a height, line 17 is where the police officer caught him, we want to retrace his steps, though, to find the scene of the crime.
+
+To go deeper we start reading the stack trace, which is the list of files below the line `Error: oh no!`.
 
 The stack trace is a record of what functions were called, listed in verse chronological order.
 
-We already looked at line 20 so we can skip that. Next is our `stacktrace-lib` file and line 19, let's take a look at that. If you read this function, what do you see? 
+We already looked at line 17 so we can skip that. Next is our `stacktrace-sumNumbers` file and line 19, let's take a look at that. If you read this function, what do you see? 
 
 ```js
 function addNumbers (x, y, cb) {
@@ -171,10 +173,10 @@ function addNumbers (x, y, cb) {
 }
 ```
 
-This function is designed to throw an error if the sum of the two numbers is less than 10. You might have noticed that we passed it `1` and `2` so that would trigger the error conditions. If you didn't notice that, or more realistically, it's not immediately obvious who passed this function bad arguments, go to the next line of the stack trace.
+This function is designed to throw an error if the sum of the two numbers is less than 10. You might have noticed that in one of the instances where we called that function, we passed it `1` and `2`, which would trigger the error condition. If you didn't notice that, or more realistically, it's not immediately obvious who passed this function bad arguments, go to the next line of the stack trace.
 
-The next line tells us to look at line 18 of index.js. This is where we're calling `sumNumbers` and giving it bad info. This line is really useful since we're calling `sumNumbers` twice and we want to know which one is causing us so much difficulty in our lives.
+The next line tells us to look at line 13 of index.js. This line is really useful since we're calling `sumNumbers` twice and we want to know which one is causing us so much difficulty in our lives.
 
-Looking at line 18, you could log those arguments and see what they look like and hopefully find the error.
+To double check, you could put `console.log(x, y)` on line 12 and see what those variables are as they're getting passed into `sumNumbers`.
 
 **Main takeaway:** In looking at stack traces, there will be some files you don't recognize at all and a lot of nonsense. Look for files whose names look familiar to you and start inspecting who is calling those functions and what they're being passed.
