@@ -1,9 +1,18 @@
 Error messages
 ==============
 
-Reading error messages can be tricky. Npm doesn't fully help since it prints out a lot of boilerplate info. But we can find some common patterns on what sections can be ignored.
+Reading error messages can be tricky. Npm doesn't fully help since it prints out a lot of boilerplate info, but we can find some common patterns.
 
-## Npm command errors
+## Table of contents
+
+* [npm command errors](#npm-command-errors)
+* [No module found errors](#no-module-found-errors)
+* [Script errors](#script)
+* [Reading stack traces](#reading-stack-traces)
+
+## npm command errors
+
+These are errors that happen when you mistype an [npm script command](2-run-commands.md).
 
 For example, let's say you are trying to do `npm run dev` but you have a typo and you write `dve` intead. Npm will give you the following
 
@@ -33,6 +42,8 @@ The rest of the text is boilerplate information on how to report an error.
 **Main takeaway:** Look at the middle section to see if npm has given you a meaningful error message.
 
 ## Script errors
+
+These are generic JavaScript errors such as `ReferenceErrors` or `TypeErrors`. They are essentially simple errors that should look familiar to you if you're used to coding JavaScript in the browser. npm adds some extra junk, though, so let's see what we can safely ignore and which parts are relevant.
 
 Replace the contents of your `index.js` file with [`problem-files/reference-error.js`](../problem-files/reference-error.js) and run `npm start`. You should get the following error:
 
@@ -156,7 +167,7 @@ Again, we scroll up to read the error that JavaScript sent us and we ignore the 
 
 The first place to look is line 17 of our index.js file, as the message tells us up top. That isn't super helpful because that's merely the line that is telling us that it found an error, not the root cause. If your error is a jewelry thief fleeing from a height, line 17 is where the police officer caught him, we want to retrace his steps, though, to find the scene of the crime.
 
-To go deeper we start reading the stack trace, which is the list of files below the line `Error: oh no!`.
+To go deeper we start reading k trace, which is the list of files below the line `Error: oh no!`.
 
 The stack trace is a record of what functions were called, listed in verse chronological order.
 
