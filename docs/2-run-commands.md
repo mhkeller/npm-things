@@ -102,6 +102,39 @@ With a `package.json` of the following, do `npm run list-files`
 }
 ```
 
+### Command line dependencies
+
+As we saw in the **Saving dependencies** section of `1-getting-started.md`, you can keep track of your dependencies by doing `npm install --save <pkg-name>`. This command will download the specified library into the `node_modules` folder and add a reference to its name and version in `package.json` and you have access to that package in your scripts via `var myPackage = require(<pkg-name>)`.
+
+Some node packages are meant to be used on the command line, though. Fortunately, the process is exactly the same for these and run scripts give you some nice conveniences as well.
+
+For example, let's say you use the [live-server](https://www.npmjs.com/package/live-server) package to create a local server that will automatically refresh when your files change. You've installed this node module globally with `npm install -g live-server` which means that you can type `live-server` into any terminal window and it will start a local server.
+
+Now, a colleague wants to clone down your project and get it running with a local server, This can be a stumbling block if a) they don't already have live-server (or some other solution) installed, or b) your project has some specific settings to make the server run smoothly.
+
+As a solution, you can do `npm install --save live-server`, which will create a `node_modules/.bin` folder and put a live-server executable there. All of your commands in your `package.json` run scripts, will look for executable files in this folder. You can now add a run command (we'll call it `server` that will run that executable like so:
+
+```json
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "My cool project.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "live-server"
+  },
+  "author": "Michael Keller",
+  "license": "MIT",
+  "dependencies": {}
+}
+```
+
+A user can launch the server with `npm run server`. This makes it convenient since your package is fully self-contained.
+
+This setup is also a good practice for command-line packages like [Gulp](http://gulpjs.com/) because it makes it clear what version you are using. There are also consistency benefits in that if you want to switch from live-server or Gulp to something else, your users can keep using the same generic `npm run server` commands or `npm run build`.
+
 ### Advanced run commands
 
 You can get fancy with run commands. In the list below, we have `do-all` which runs our other npm commands.
